@@ -1,0 +1,20 @@
+<div *ngIf="product$ | async as product" class="side-form">
+    <h2>{{product.name | uppercase}}</h2>
+    <img style="float:right" [src]="product.imageUrl" *ngIf="product.imageUrl" width="250"  alt=""/>
+    <h3>{{product.description}}</h3>
+    <p>Price: {{product.price | currency:'CAD':'symbol-narrow':'.2'}}</p>
+    <p>Fixed price? {{product.fixedPrice}}</p>
+    <p>Discontinued? {{product.discontinued}}
+    </p>
+    <p>Modified date:
+        {{product.modifiedDate | date}}</p>
+    <p>
+        <button (click)="addToFavourites(product)">
+            Add to favourites</button>
+
+        <button (click)="deleteProduct(product.id)">Delete Product</button>
+    </p>
+    <p>
+        <button routerLink="/products">< Back to list</button>
+    </p>
+</div>
